@@ -1,0 +1,22 @@
+<div
+  [ngStyle]="{
+    color:
+      this.carta.paloNombre === 'Pica' || this.carta.paloNombre === 'Trebol'
+        ? 'black'
+        : 'red'
+  }"
+  class="card"
+  title="{{ this.carta.nombre }}"
+>
+  <div class="letter">{{ this.carta.valorNombre }}</div>
+
+  <div [ngSwitch]="this.carta.paloNombre">
+    <div class="suit" *ngSwitchCase="'Pica'">&spades;</div>
+    <div class="suit" *ngSwitchCase="'Trebol'">&clubs;</div>
+    <div class="suit" *ngSwitchCase="'Corazon'">&hearts;</div>
+    <div class="suit" *ngSwitchCase="'Diamante'">&diams;</div>
+  </div>
+</div>
+
+<div><button (click)="jugar(this.carta, 'mayor')">Mayor</button></div>
+<div><button (click)="jugar(this.carta, 'menor')">Menor</button></div>
